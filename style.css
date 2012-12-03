@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+		
+		.navbar{
+			padding-bottom: 5px;
+		}
+
+		.title{
+			text-align: right;
+			font-size: 60px;
+			text-decoration: none;
+			color: white;
+		}
+		
+		.code{
+			font-size: 3px;
+			float:left;
+			width: 100px;
+			padding-top: 20px;
+		}
+		
+		.content{
+			margin-left: 5em;
+			color: white;
+		}
+		
+		.indent{
+			margin-left: 4em
+		}
+		
+		.buttons{
+			color: white;
+			width: 70px;
+			height: 30 px;
+
+		}
+		
+		.smallbox {
+			font-size: 17px;
+			letter-spacing: -0.02em;
+			line-height: 17px;
+			
+			text-align: center;
+			color: orange;
+			display: inline;
+			position: relative;
+			width: 80px;
+			height: 15px;
+			overflow: hidden;
+			padding: 7px;
+			text-decoration: none;
+			font-family: "Georgia";
+			margin-left: 30px;
+		}
+		
+		.smallbox:hover{
+			/*
+			-moz-box-shadow: 0 0 10px rgba(255,0,0,1);
+			-webkit-box-shadow: 0 0 10px rgba(255,0,0,1);
+			box-shadow: 0 0 10px rgba(255,0,0,1);
+			*/
+			background: orange;
+			color: black;
+		}
+
+		.text{
+			margin: 0 auto;
+			width: 55em;
+			font-family: 'Linden Hill';
+			font-size: 18px;
+			opacity: 1;
+		}
+
+		.alignmentdisplay{
+			display: inline;
+		}
+
+		.alignleft{
+			float: left;
+			padding-right: 30px;
+		}
+
+		.alignright{
+			float: right;
+		}
+
+		.aligncenter{
+			text-align: center;
+		}
+
+		.topborder {
+		  width: 100%;
+		  height: 10px;
+		  background-color: orange;
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  z-index: 99;
+		  opacity: 1;
+		}
+
+		.project{
+			width: 900px;
+			margin: 0 auto;
+			padding: 30px;
+
+			font-size: 20px;
+			color: white;
+			letter-spacing: -0.02em;
+			line-height: 25px;
+			font-family: "Balthazar";
+
+			border-radius:20px;
+			background: black;
+			border: 1px orange solid;
+		}
+
+		.selected{
+			font-size: 17px;
+			letter-spacing: -0.02em;
+			line-height: 17px;
+			
+			background: orange;
+			text-align: center;
+			color: black;
+			display: inline;
+			position: relative;
+			width: 80px;
+			height: 15px;
+			overflow: hidden;
+			padding: 7px;
+			text-decoration: none;
+			font-family: "Georgia";
+			margin-left: 30px;
+		}
+
+		.searchButton{
+			background: black;
+			font-size: 15px;
+			letter-spacing: -0.02em;
+			line-height: 15px;
+			border: 2px solid orange;
+			
+			text-align: center;
+			color: orange;
+			/*display: inline;*/
+			/*position: relative;*/
+			width: 80px;
+			height: 30px;
+			/*overflow: hidden;*/
+			padding: 5px;
+			text-decoration: none;
+			font-family: "Georgia";
+			border-radius: 5px;
+		}
+
+		.searchButton:hover{
+			background: orange;
+			color: black;
+			cursor: pointer;
+		}
+
+		.searchBar{
+			width: 600px;
+			height: 30px;
+			border-radius: 5px;
+			padding: 3px 3px 3px 8px;
+			font-family: "Georgia";
+		}
+
+		.pageTitle{
+			font-size: 40px;
+			margin-left: 120px;
+			font-family: "Puritan";
+		}
+
+		#cursor p
+		{
+		  float: left;
+		}
+
+		a:visited {
+			COLOR: none;
+		}

@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<html>
+	<header>
+		<title>gaoism</title>
+	</header> 
+    
+
+    
+<body bgcolor="#0A0A0A" text="#F2F2F2" link="white">
+        <div class="code">
+            <pre>
+            <font color="orange">site</font>.init()
+            import cool_looking_code.py
+            a = input()
+            parse_line(a)
+            for command in a:
+                try:
+                    execute(command)
+                except:
+                    print("lol u r a n00b")
+            return 0
+            </pre>
+        </div> 
+
+        <table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <a class="smallbox" href="http://www.flickr.com/photos/pgao/">pictures</a>
+                        <a class="smallbox" href="projects.html">projects</a>
+                        <a class="smallbox" href="http://pgao.tumblr.com/">bloorg</a>
+                        <a class="smallbox" href="about_me.html">about</a>
+                    </td>
+                    
+                    <td>
+                        <div class="title">
+                            <a href="index.html" style="text-decoration: none; color: white;">gaoism</a>
+                        </div>
+                    </td>
+                </tr>
+        </table>
+
+    <!-- CONTENT -->
+
+    <div align="center">
+        <script type="text/javascript"> 
+      
+        /***********************************************
+        * Ultimate Fade-In Slideshow (v1.51): Â© Dynamic Drive (http://www.dynamicdrive.com)
+        * This notice MUST stay intact for legal use
+        * Visit http://www.dynamicdrive.com/ for this script and 100s more.
+        ***********************************************/
+         
+         
+        var fadebgcolor="black"
+         
+        ////NO need to edit beyond here/////////////
+         
+        var fadearray=new Array() //array to cache fadeshow instances
+        var fadeclear=new Array() //array to cache corresponding clearinterval pointers
+         
+        var dom=(document.getElementById) //modern dom browsers
+        var iebrowser=document.all
+         
+        function fadeshow(theimages, fadewidth, fadeheight, borderwidth, delay, pause, displayorder){
+        this.pausecheck=pause
+        this.mouseovercheck=0
+        this.delay=delay
+        this.degree=10 //initial opacity degree (10%)
+        this.curimageindex=0
+        this.nextimageindex=1
+        fadearray[fadearray.length]=this
+        this.slideshowid=fadearray.length-1
+        this.canvasbase="canvas"+this.slideshowid
+        this.curcanvas=this.canvasbase+"_0"
+        if (typeof displayorder!="undefined")
+        theimages.sort(function() {return 0.5 - Math.random();}) //thanks to Mike (aka Mwinter) :)
+        this.theimages=theimages
+        this.imageborder=parseInt(borderwidth)
+        this.postimages=new Array() //preload images
+        for (p=0;p<theimages.length;p++){
+        this.postimages[p]=new Image()
+        this.postimages[p].src=theimages[p][0]
+        }
+         
+        var fadewidth=fadewidth+this.imageborder*2
+        var fadeheight=fadeheight+this.imageborder*2
+         
+        if (iebrowser&&dom||dom) //if IE5+ or modern browsers (ie: Firefox)
+        document.write('<div id="master'+this.slideshowid+'" style="position:relative;width:'+fadewidth+'px;height:'+fadeheight+'px;overflow:hidden;"><div id="'+this.canvasbase+'_0" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);opacity:0.1;-moz-opacity:0.1;-khtml-opacity:0.1;background-color:'+fadebgcolor+'"></div><div id="'+this.canvasbase+'_1" style="position:absolute;width:'+fadewidth+'px;height:'+fadeheight+'px;top:0;left:0;filter:progid:DXImageTransform.Microsoft.alpha(opacity=10);opacity:0.1;-moz-opacity:0.1;-khtml-opacity:0.1;background-color:'+fadebgcolor+'"></div></div>')
+        else
+        document.write('<div><img name="defaultslide'+this.slideshowid+'" src="'+this.postimages[0].src+'"></div>')
+         
+        if (iebrowser&&dom||dom) //if IE5+ or modern browsers such as Firefox
+        this.startit()
+        else{
+        this.curimageindex++
+        setInterval("fadearray["+this.slideshowid+"].rotateimage()", this.delay)
+        }
+        }
+         
+        function fadepic(obj){
+        if (obj.degree<100){
+        obj.degree+=10
+        if (obj.tempobj.filters&&obj.tempobj.filters[0]){
+        if (typeof obj.tempobj.filters[0].opacity=="number") //if IE6+
+        obj.tempobj.filters[0].opacity=obj.degree
+        else //else if IE5.5-
+        obj.tempobj.style.filter="alpha(opacity="+obj.degree+")"
+        }
+        else if (obj.tempobj.style.MozOpacity)
+        obj.tempobj.style.MozOpacity=obj.degree/101
+        else if (obj.tempobj.style.KhtmlOpacity)
+        obj.tempobj.style.KhtmlOpacity=obj.degree/100
+        else if (obj.tempobj.style.opacity&&!obj.tempobj.filters)
+        obj.tempobj.style.opacity=obj.degree/101
+        }
+        else{
+        clearInterval(fadeclear[obj.slideshowid])
+        obj.nextcanvas=(obj.curcanvas==obj.canvasbase+"_0")? obj.canvasbase+"_0" : obj.canvasbase+"_1"
+        obj.tempobj=iebrowser? iebrowser[obj.nextcanvas] : document.getElementById(obj.nextcanvas)
+        obj.populateslide(obj.tempobj, obj.nextimageindex)
+        obj.nextimageindex=(obj.nextimageindex<obj.postimages.length-1)? obj.nextimageindex+1 : 0
+        setTimeout("fadearray["+obj.slideshowid+"].rotateimage()", obj.delay)
+        }
+        }
+         
+        fadeshow.prototype.populateslide=function(picobj, picindex){
+        var slideHTML=""
+        if (this.theimages[picindex][1]!="") //if associated link exists for image
+        slideHTML='<a href="'+this.theimages[picindex][1]+'" target="'+this.theimages[picindex][2]+'">'
+        slideHTML+='<img src="'+this.postimages[picindex].src+'" border="'+this.imageborder+'px">'
+        if (this.theimages[picindex][1]!="") //if associated link exists for image
+        slideHTML+='</a>'
+        picobj.innerHTML=slideHTML
+        }
+         
+         
+        fadeshow.prototype.rotateimage=function(){
+        if (this.pausecheck==1) //if pause onMouseover enabled, cache object
+        var cacheobj=this
+        if (this.mouseovercheck==1)
+        setTimeout(function(){cacheobj.rotateimage()}, 100)
+        else if (iebrowser&&dom||dom){
+        this.resetit()
+        var crossobj=this.tempobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+        crossobj.style.zIndex++
+        fadeclear[this.slideshowid]=setInterval("fadepic(fadearray["+this.slideshowid+"])",50)
+        this.curcanvas=(this.curcanvas==this.canvasbase+"_0")? this.canvasbase+"_1" : this.canvasbase+"_0"
+        }
+        else{
+        var ns4imgobj=document.images['defaultslide'+this.slideshowid]
+        ns4imgobj.src=this.postimages[this.curimageindex].src
+        }
+        this.curimageindex=(this.curimageindex<this.postimages.length-1)? this.curimageindex+1 : 0
+        }
+         
+        fadeshow.prototype.resetit=function(){
+        this.degree=10
+        var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+        if (crossobj.filters&&crossobj.filters[0]){
+        if (typeof crossobj.filters[0].opacity=="number") //if IE6+
+        crossobj.filters(0).opacity=this.degree
+        else //else if IE5.5-
+        crossobj.style.filter="alpha(opacity="+this.degree+")"
+        }
+        else if (crossobj.style.MozOpacity)
+        crossobj.style.MozOpacity=this.degree/101
+        else if (crossobj.style.KhtmlOpacity)
+        crossobj.style.KhtmlOpacity=this.degree/100
+        else if (crossobj.style.opacity&&!crossobj.filters)
+        crossobj.style.opacity=this.degree/101
+        }
+         
+         
+        fadeshow.prototype.startit=function(){
+        var crossobj=iebrowser? iebrowser[this.curcanvas] : document.getElementById(this.curcanvas)
+        this.populateslide(crossobj, this.curimageindex)
+        if (this.pausecheck==1){ //IF SLIDESHOW SHOULD PAUSE ONMOUSEOVER
+        var cacheobj=this
+        var crossobjcontainer=iebrowser? iebrowser["master"+this.slideshowid] : document.getElementById("master"+this.slideshowid)
+        crossobjcontainer.onmouseover=function(){cacheobj.mouseovercheck=1}
+        crossobjcontainer.onmouseout=function(){cacheobj.mouseovercheck=0}
+        }
+        this.rotateimage()
+        }
+         
+        </script> 
+        <p>
+        <script type="text/javascript"> 
+        var fadeimages=new Array()
+        fadeimages[0]=["pics/1.JPG", "", ""] 
+        fadeimages[1]=["pics/2.JPG", "", ""]  
+        fadeimages[2]=["pics/3.JPG", "", ""]
+        fadeimages[3]=["pics/4.JPG", "", ""]
+        fadeimages[4]=["pics/5.JPG", "", ""]
+        fadeimages[5]=["pics/6.JPG", "", ""]
+
+        //syntax: new fadeshow(IMAGES_ARRAY_NAME, slideshow_width, slideshow_height, borderwidth, delay, pause (0=no, 1=yes), optionalRandomOrder)
+        new fadeshow(fadeimages, 1000, 400, 0, 5000, 0)
+        </script>
+    </div>
+    
+    <br>
+    <p align="center" style="font-family: 'Balthazar', serif; font-size: 28px"> I'm Peter Gao. <br></p>
+
+	<!--
+    <center><object width="600" height="450"> <param name="flashvars" value="offsite=true&lang=en-us&page_show_url=%2Fphotos%2F71551835%40N03%2Fsets%2F72157628309184093%2Fshow%2F&page_show_back_url=%2Fphotos%2F71551835%40N03%2Fsets%2F72157628309184093%2F&set_id=72157628309184093&jump_to="></param> <param name="movie" value="http://www.flickr.com/apps/slideshow/show.swf?v=109615"></param> <param name="allowFullScreen" value="true"></param><embed type="application/x-shockwave-flash" src="http://www.flickr.com/apps/slideshow/show.swf?v=109615" allowFullScreen="true" flashvars="offsite=true&lang=en-us&page_show_url=%2Fphotos%2F71551835%40N03%2Fsets%2F72157628309184093%2Fshow%2F&page_show_back_url=%2Fphotos%2F71551835%40N03%2Fsets%2F72157628309184093%2F&set_id=72157628309184093&jump_to=" width="600" height="450"></embed></object></center>
+    -->
+	
+	<!--
+    <div class="text">
+        <center>Do you ever feel as if your life is boring and unsatisfying?
+        <br>
+        <br>
+		Peter Gao has all the answers to your problems.  
+        <br>
+        <br>
+        Nothing can be promised regarding the comprehensibility of said answers, though. 
+        </center>
+    </div>
+    -->
+		
+</body>
+</html>

@@ -1,0 +1,276 @@
+<link href='http://fonts.googleapis.com/css?family=Balthazar' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Puritan' rel='stylesheet' type='text/css'>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet"
+        href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/base/jquery-ui.css"
+        type="text/css" />
+
+
+<html>
+	<header>
+		<title>gaoism</title>
+	</header> 
+    
+<head>
+<style>
+  #map_canvas { width: 1000px;height: 400px; margin-left: auto; margin-right: auto;}
+</style>
+
+<script type="text/javascript"src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript"
+    src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js">
+</script>
+<script type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+</script>
+
+<script type="text/javascript">
+
+var layer;
+var tableId = 2769935;
+var map;
+
+function initialize() {
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+        center: new google.maps.LatLng(37.871127007263176, -122.25414276123047),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    layer = new google.maps.FusionTablesLayer(tableId);
+    layer.setQuery("SELECT 'Location' FROM " + tableId);
+    layer.setMap(map);
+
+    //initAutoComplete(tableId);
+
+}
+
+function changeMap1() {
+    var searchName = document.getElementById('search-name').value.replace(/'/g, "\\'");
+    var searchLocation = document.getElementById('search-location').value.replace(/'/g, "\\'");
+    var searchTime = document.getElementById('search-time').value.replace(/'/g, "\\'");
+
+    var where = "'Event Name' CONTAINS IGNORING CASE '" + searchName + "'";
+    if (searchLocation) {
+      where += " AND 'Location' CONTAINS IGNORING CASE '" + searchLocation + "'";
+    }
+    /*if(searchTime){
+        where += " AND 'Date/Time' CONTAINS IGNORING CASE '" + searchTime + "'";
+    }*/
+    /*layer.setOptions({
+      query: {
+        select: 'Location',
+        from: 2769935,
+        where: where
+      }
+    });*/
+
+    layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE " + where);
+
+    //layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE 'Event Name' CONTAINS IGNORING CASE '" + searchName + "'");
+    
+    //layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE '" + searchName + "' IN ('Event Name', 'Location', 'Date/Time')");
+
+    //layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE 'Event Name' CONTAINS IGNORING CASE '" + searchName + "' AND 'Location' CONTAINS IGNORING CASE '" + searchLocation + "' AND 'Date/Time' CONTAINS IGNORING CASE '" + searchTime + "'");
+    //layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE 'Location' CONTAINS IGNORING CASE '" + searchLocation + "'");
+    //layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE 'Date/Time' CONTAINS IGNORING CASE '" + searchTime + "'");
+}
+
+function changeMap2() {
+    var searchString = document.getElementById('search-string').value.replace(/'/g, "\\'");
+
+    var searchName = document.getElementById('search-name');
+    var searchLocation = document.getElementById('search-location');
+    var searchTime = document.getElementById('search-time');
+
+    var where = "";
+
+    if(searchName.checked == true){
+        if(where != ""){
+            where += " OR ";
+        }
+        where += "'Event Name' CONTAINS IGNORING CASE '" + searchString + "'";
+    }
+
+    if(searchLocation.checked == true){
+        if(where != ""){
+            where += " OR ";
+        }
+        where += "'Location' CONTAINS IGNORING CASE '" + searchString + "'";
+    }
+
+    /*if(searchTime.checked == true){
+        if(where != ""){
+            where += " OR ";
+        }
+        where += "'Date/Time' CONTAINS IGNORING CASE '" + searchString + "'";
+    }*/
+
+    layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE " + where);
+}
+
+function changeMap3() {
+    var searchString = document.getElementById('search-string').value.replace(/'/g, "\\'");
+
+    var where = "";
+
+    if(searchString != ""){
+        where = "'Event Name' CONTAINS IGNORING CASE '" + searchString + "'";
+    }
+    
+    layer.setQuery("SELECT 'Location' FROM " + tableId + " WHERE " + where);
+}
+
+
+function initAutoComplete(tableId) {
+    // Retrieve the unique search-string names using GROUP BY workaround.
+    var searchString = document.getElementById('search-string').value.replace(/'/g, "\\'");
+    var queryText = encodeURIComponent(
+        "SELECT 'Location' FROM " + tableId + " WHERE 'Event Name' CONTAINS IGNORING CASE '" + searchString + "'");
+    var query = new google.visualization.Query(
+        'http://www.google.com/fusiontables/gvizdata?tq='  + queryText);
+
+    query.send(function(response) {
+      var numRows = response.getDataTable().getNumberOfRows();
+
+      // Create the list of results for display of autocomplete.
+      var results = [];
+      for (var i = 0; i < numRows; i++) {
+        results.push(response.getDataTable().getValue(i, 0));
+      }
+
+      // Use the results to create the autocomplete options.
+      $('#search-string').autocomplete({
+        source: results,
+        minLength: 2
+      });
+    });
+}
+
+
+</script>
+</head>
+    
+<!--onload="initialize();"-->
+
+<body bgcolor="#0A0A0A" text="#F2F2F2" link="white" onload="initialize();">
+
+    <div class="code">
+        <pre>
+        <font color="orange">site</font>.init()
+        import cool_looking_code.py
+        a = input()
+        parse_line(a)
+        for command in a:
+            try:
+                execute(command)
+            except:
+                print("lol u r a n00b")
+        return 0
+        </pre>
+    </div> 
+
+    <table width="900" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <a class="smallbox" href="http://www.flickr.com/photos/pgao/">pictures</a>
+                <a class="smallbox" href="projects.html">projects</a>
+                <a class="smallbox" href="http://pgao.tumblr.com/">bloorg</a>
+                <a class="smallbox" href="about_me.html">about</a>
+            </td>
+            
+            <td>
+                <div class="title">
+                    <a href="index.html" style="text-decoration: none; color: white;">gaoism</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <br>
+    <div class="pageTitle">Hit Me: Event Finder v0.25</div>
+    <br>
+
+    <!--
+    <iframe width="800px" height="600px" scrolling="no"  src="https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2+from+2769935+&h=false&lat=37.87532190009533&lng=-122.25012305000001&z=10&t=1&l=col2"></iframe>
+    -->
+
+    <div id="map_canvas" align="center"></div>
+
+    <br>
+
+    <div align="center">
+
+        <!-- TO FIX:
+            -Searching more than one field with one string
+            -Can't search by time
+        -->
+
+        <!-- TO DO:
+            -Make it prettier
+            -Check user location
+        -->
+
+        <!-- OMNI BAR -->
+        
+        <input type="text" id="search-string" class="searchBar" placeholder="Search by Name, Time, or Location of an Event" />
+        <input type="button" class="searchButton" onclick="changeMap3();" value="Search" />
+
+        <!-- CHECK BOXES -->
+        <!--
+        <form>
+        <input type="checkbox" id="search-name" value="Search by Name" /> Search by Name
+        <br>
+        <input type="checkbox" id="search-location" value="Search by Location" /> Search by Location
+        <br>
+        <input type="checkbox" id="search-time" value="Search by Time" /> Search by Time
+        <br>
+        </form> 
+
+        <label>Search</label>
+        <input type="text" id="search-string" />
+        
+        <br>
+
+        <input type="button" onclick="changeMap2();" value="Search" />
+        -->
+
+        <!-- SEPARATE SEARCH BARS -->
+        <!--
+        <label>Search By Name </label>
+        <input type="text" id="search-name" />
+        
+        <br>
+        -->
+        <!--
+        <label>Search By Place </label>
+        <input type="text" id="search-location" />
+        
+        <br>
+        -->
+        <!--
+        <label>Search By Time </label>
+        <input type="text" id="search-time" />
+        
+        <br>
+        -->
+        
+        <!--
+        <input type="button" onclick="changeMap1();" value="Search" />
+        -->
+
+        <a href="submit_event.html" class="searchButton">Submit New Event</a>
+    </div>
+
+
+    <br>
+    <br>
+
+</body>
+
+</html>
