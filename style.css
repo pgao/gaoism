@@ -67,7 +67,7 @@
 			margin: 0 auto;
 			width: 55em;
 			font-family: 'Linden Hill';
-			font-size: 18px;
+			font-size: 25px;
 			opacity: 1;
 		}
 
@@ -179,6 +179,15 @@
 		  float: left;
 		}
 
-		a:visited {
-			COLOR: none;
+		a:link {
+			COLOR: orange;
+			text-decoration: none;
 		}
+
+		a:visited {
+			COLOR: NONE;
+			text-decoration: none;
+		}
+
+		a:active {
+			COLOR: NONE;
