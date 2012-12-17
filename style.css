@@ -66,8 +66,9 @@
 		.text{
 			margin: 0 auto;
 			width: 55em;
-			font-family: 'Linden Hill';
-			font-size: 25px;
+			/*font-family: 'Rufina', serif;*/
+			font-family: 'Domine';
+			font-size: 20px;
 			opacity: 1;
 		}
 
