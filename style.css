@@ -114,6 +114,8 @@
 			border-radius:20px;
 			background: black;
 			border: 1px orange solid;
+
+			margin-bottom: 40px;
 		}
 
 		.selected{
@@ -192,3 +194,4 @@
 
 		a:active {
 			COLOR: NONE;
+		}
