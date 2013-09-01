@@ -177,11 +177,6 @@
 			font-family: "Puritan";
 		}
 
-		#cursor p
-		{
-		  float: left;
-		}
-
 		a:link {
 			COLOR: orange;
 			text-decoration: none;
